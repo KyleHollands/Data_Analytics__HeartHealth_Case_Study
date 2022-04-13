@@ -5,17 +5,19 @@ Ask
 
 Guiding questions
 
-● What topic are you exploring?
+* What topic are you exploring?
+The topic I decided to explore for my second data analysis project is to determine what factors can lead to Heart Disease.
 
-● What is the problem you are trying to solve?
+* What is the problem you are trying to solve?
+Can certain metrics predict Heart Disease.
 
-● What metrics will you use to measure your data to achieve your objective?
+* What metrics will you use to measure your data to achieve your objective?
 
-● Who are the stakeholders?
+* Who are the stakeholders?
 
-● Who is your audience?
+* Who is your audience?
 
-● How can your insights help your client make decisions?
+* How can your insights help your client make decisions?
 
 Key tasks
 
@@ -27,4 +29,3 @@ Key tasks
 Deliverable
 
 A clear statement of the business task you have selected to investigate
-
