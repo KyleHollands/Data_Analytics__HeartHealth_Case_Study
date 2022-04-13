@@ -2,7 +2,6 @@
 
 ---
 Ask
----
 
 Guiding questions
 
