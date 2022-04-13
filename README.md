@@ -7,10 +7,15 @@ Ask
 Guiding questions
 
 ● What topic are you exploring?
+
 ● What is the problem you are trying to solve?
+
 ● What metrics will you use to measure your data to achieve your objective?
+
 ● Who are the stakeholders?
+
 ● Who is your audience?
+
 ● How can your insights help your client make decisions?
 
 Key tasks
