@@ -6,7 +6,8 @@
 
 1. What topic are you exploring?
 
-The topic I decided to explore for my second data analysis project is to determine what factors can lead to Heart Disease.
+The topic I decided to explore for my second data analysis project is to determine what factors can lead to Heart Disease,
+and to try and predict it.
 
 2. What is the problem you are trying to solve?
 
