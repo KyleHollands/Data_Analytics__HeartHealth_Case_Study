@@ -6,8 +6,7 @@
 
 1. What topic are you exploring?
 
-The topic I decided to explore for my second data analysis project is to determine what factors can lead to Heart Disease,
-and to try and predict it.
+The topic of this analysis will focus on metrics that may contribute to heart disease.
 
 2. What is the problem you are trying to solve?
 
@@ -35,14 +34,46 @@ If the insights gained from this analysis provide a strong indication that these
 
 > Key tasks
 
-1. Identify the business task
+1. Identify the business task **
 
-2. Determine key stakeholders
+2. Determine key stakeholders **
 
-3. Choose a dataset
+3. Choose a dataset **
 
-4. Establish metrics
+4. Establish metrics **
 
 > Deliverable
 
-A clear statement of the business task you have selected to investigate
+A clear statement of the business task you have selected to investigate **
+
+## Prepare
+
+> Guiding questions 
+
+● Where is your data located?
+
+● How is the data organized? 
+
+● Are there issues with bias or credibility in this data? Does your data ROCCC?
+
+● How are you addressing licensing, privacy, security, and accessibility?
+
+● How did you verify the data’s integrity?
+
+● How does it help you answer your question?
+
+● Are there any problems with the data?
+
+> Key Tasks
+
+● Download data and store it appropriately.
+
+● Identify how it’s organized.
+
+● Sort and filter the data.
+
+● Determine the credibility of the data.
+
+> Deliverable 
+
+A description of all data sources used
