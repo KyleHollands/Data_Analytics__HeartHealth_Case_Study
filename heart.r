@@ -21,5 +21,16 @@ head(heart_health_metrics)
 tail(heart_health_metrics)
 summary(heart_health_metrics)
 str(heart_health_metrics)
+View(heart_health_metrics)
+
+# Complete initial analysis for bias and discrepancies.
+table(heart_health_metrics$Sex)
+aggregate(heart_health_metrics$Age ~ heart_health_metrics$Sex, FUN = mean)
+
+max(heart_health_metrics$Age)
+max(heart_health_metrics$RestingBP)
+max(heart_health_metrics$Cholesterol)
+max(heart_health_metrics$MaxHR)
+max(heart_health_metrics$)
 
 
