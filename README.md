@@ -55,23 +55,26 @@ A clear statement of the business task you have selected to investigate **
     - After completing initial anaylsis on the data, it turns out that there may be sampling bias present within the dataset.
     - Although heart disease tends to effect males more on average, there are substantially more males represented in this data than women.
 
-● How are you addressing licensing, privacy, security, and accessibility?
+- How are you addressing licensing, privacy, security, and accessibility?
+    - The dataset was acquired from Kaggle, and is open to the public to be analyzed. The data itself is being stored on OneDrive, and locally so there is some redundancy present. 
 
-● How did you verify the data’s integrity?
+- How did you verify the data’s integrity?
+    - One method to verify the data's integrity is to compare it to the source after it's been downloaded. Comparing the file size can provide an indication if something in the data has changed, or been manipulated.
 
-● How does it help you answer your question?
+- How does it help you answer your question?
 
-● Are there any problems with the data?
+- Are there any problems with the data?
+    - There does not appear to be any serious issues with the data. There are some minor issues, such as reformating a variable represented as True/False as 1/0 for easier analysis, or the fact there are some outliers in the data that could be errors.
 
 > Key Tasks
 
-● Download data and store it appropriately.
+- Download data and store it appropriately. **
 
-● Identify how it’s organized.
+- Identify how it’s organized. **
 
-● Sort and filter the data.
+- Sort and filter the data.
 
-● Determine the credibility of the data.
+- Determine the credibility of the data.
 
 > Deliverable 
 

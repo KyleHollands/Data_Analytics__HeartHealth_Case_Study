@@ -23,14 +23,28 @@ summary(heart_health_metrics)
 str(heart_health_metrics)
 View(heart_health_metrics)
 
-# Complete initial analysis for bias and discrepancies.
-table(heart_health_metrics$Sex)
+# Complete initial analysis for bias, errors and discrepancies.
+table(heart_health_metrics$Sex) # Sampling bias found.
 aggregate(heart_health_metrics$Age ~ heart_health_metrics$Sex, FUN = mean)
 
-max(heart_health_metrics$Age)
-max(heart_health_metrics$RestingBP)
-max(heart_health_metrics$Cholesterol)
-max(heart_health_metrics$MaxHR)
-max(heart_health_metrics$)
+heart_health_metrics %>%
+  filter(Sex == "F", ) %>%
+  summarize(min_age = min(Age),
+            max_age = max(Age),
+            min_resting_bp = min(RestingBP),
+            max_resting_bp = max(RestingBP),
+            min_chol = min(Cholesterol),
+            max_chol = max(Cholesterol), # Possible error in max_chol.
+            min_max_hr = min(MaxHR),
+            max_max_hr = max(MaxHR))
 
-
+heart_health_metrics %>%
+  filter(Sex == "M", ) %>%
+  summarize(min_age = min(Age),
+            max_age = max(Age),
+            min_resting_bp = min(RestingBP),
+            max_resting_bp = max(RestingBP),
+            min_chol = min(Cholesterol),
+            max_chol = max(Cholesterol), # Possible error in max_chol.
+            min_max_hr = min(MaxHR),
+            max_max_hr = max(MaxHR))
