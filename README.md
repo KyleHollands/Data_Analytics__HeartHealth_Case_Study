@@ -79,3 +79,18 @@ A clear statement of the business task you have selected to investigate **
 > Deliverable 
 
 A description of all data sources used
+
+## Process
+
+Guiding questions 
+
+- What tools are you choosing and why?
+    - After initially using Excel for some preliminary analysis, I'll primarily be using R for the rest of the analysis, visualizations and presentations. I might utilize Tableau for visualizations as well.
+
+- Have you ensured your data’s integrity?
+
+- What steps have you taken to ensure that your data is clean?
+
+- How can you verify that your data is clean and ready to analyze?
+
+- Have you documented your cleaning process so you can review and share those results?
