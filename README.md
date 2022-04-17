@@ -85,9 +85,12 @@ A description of all data sources used
 Guiding questions 
 
 - What tools are you choosing and why?
-    - After initially using Excel for some preliminary analysis, I'll primarily be using R for the rest of the analysis, visualizations and presentations. I might utilize Tableau for visualizations as well.
+    - After initially using Excel for some preliminary analysis, I'll primarily be using R for the rest of the analysis, visualizations and presentation. I might utilize Tableau for visualizations as well.
 
 - Have you ensured your data’s integrity?
+    - After acquiring the dataset from the Kaggle website, the integrity of the data appears to be in tact as the size of the dataset is the same as its source.
+    - The formatting of the data is consistent, and although one column was modified to be analyzed easier, it does not change the representation of it.
+    - No data has been removed or added to the dataset, therefore the integrity is intact.
 
 - What steps have you taken to ensure that your data is clean?
 
