@@ -32,28 +32,33 @@ sapply(heart_health_metrics, function(x) sum(is.na(x))) # There are no N/A's wit
 # Remove any rows where Cholesterol equates to 0.
 heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$Cholesterol <= 0),]
 
+# Rename some of the columns.
+heart_health_metrics <- rename(heart_health_metrics,
+  RestingBloodPressure = RestingBP,
+  FastingBloodSugar = FastingBS,
+  MaxHeartRate = MaxHR)
 
 heart_health_metrics %>%
   filter(Sex == "F", ) %>%
   summarize(min_age = min(Age),
             max_age = max(Age),
-            min_resting_bp = min(RestingBP),
-            max_resting_bp = max(RestingBP),
+            min_resting_bp = min(RestingBloodPressure),
+            max_resting_bp = max(RestingBloodPressure),
             min_chol = min(Cholesterol), # There are many rows with 0, indicating data was not collected for some individuals.
             max_chol = max(Cholesterol), # Possible error in max_chol.
-            min_max_hr = min(MaxHR),
-            max_max_hr = max(MaxHR))
+            min_max_hr = min(MaxHeartRate),
+            max_max_hr = max(MaxHeartRate))
 
 heart_health_metrics %>%
   filter(Sex == "M", ) %>%
   summarize(min_age = min(Age),
             max_age = max(Age),
-            min_resting_bp = min(RestingBP),
-            max_resting_bp = max(RestingBP),
+            min_resting_bp = min(RestingBloodPressure),
+            max_resting_bp = max(RestingBloodPressure),
             min_chol = min(Cholesterol), # There are many rows with 0, indicating data was not collected for some individuals.
             max_chol = max(Cholesterol), # Possible error in max_chol.
-            min_max_hr = min(MaxHR),
-            max_max_hr = max(MaxHR))
+            min_max_hr = min(MaxHeartRate),
+            max_max_hr = max(MaxHeartRate))
 
 # Start comparing variables for further insight.
 
@@ -63,27 +68,27 @@ heart_health_metrics %>%
 
 heart_health_metrics %>%
   group_by(Sex) %>%
-  summarize(AVG_RestingBP = mean(RestingBP)) # Females and Males seem to have similar average resting blood pressure.
+  summarize(AVG_RestingBloodPressure = mean(RestingBloodPressure)) # Females and Males seem to have similar average resting blood pressure.
 
 heart_health_metrics %>%
   group_by(Sex) %>%
-  summarize(AVG_MaxHR = mean(MaxHR)) # Female average max heart rate is higher.
+  summarize(AVG_MaxHeartRate = mean(MaxHeartRate)) # Female average max heart rate is higher.
 
 # Comparing average Age for those with and without Heart Disease.
 aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean) # Around the age of 55 appears to be the peak of Heart Disease.
 
-# Comparing average RestingBP for those with and without Heart Disease.
-aggregate(heart_health_metrics$RestingBP ~ heart_health_metrics$HeartDisease, FUN = mean) # Although the difference between blood pressure for those with and without Heart Disease appears to be
+# Comparing average RestingBloodPressure for those with and without Heart Disease.
+aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$HeartDisease, FUN = mean) # Although the difference between blood pressure for those with and without Heart Disease appears to be
 # negligible, this indicates that a higher blood pressure is somewhat associated with a higher risk of Heart Disease. Blood Pressure of under 120 is considered normal.
 
 # Comparing average Cholesterol for those with and without Heart Disease.
 aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean)
 
-# Comparing FastingBS (diabetic or not) for those with and without Heart Disease.
-aggregate(heart_health_metrics$FastingBS ~ heart_health_metrics$HeartDisease, FUN = sum) # This indicates that pre-diabetics and diabetics are at a higher risk of Heart Disease.
+# Comparing FastingBloodSugar (diabetic or not) for those with and without Heart Disease.
+aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = sum) # This indicates that pre-diabetics and diabetics are at a higher risk of Heart Disease.
 
-# Comparing MaxHR for those with and without Heart Disease.
-aggregate(heart_health_metrics$MaxHR ~ heart_health_metrics$HeartDisease, FUN = mean)
+# Comparing MaxHeartRate for those with and without Heart Disease.
+aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$HeartDisease, FUN = mean)
 
 # Comparing ExerciseAngina for those with and without Heart Disease.
 aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean) # Those with exercise angina appear to be a greater risk of Heart Disease.
@@ -104,13 +109,21 @@ aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$RestingECG, F
 table(heart_health_metrics$RestingECG,
 heart_health_metrics$ChestPainType,
 heart_health_metrics$Sex,
-heart_health_metrics$FastingBS,
+heart_health_metrics$FastingBloodSugar,
 heart_health_metrics$HeartDisease) # Asymptomatic chest pain type with normal ECG readings in Males appears to show the highest rates of HeartDisease.
 
-# Comparing 
+# Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
+# to diabetes and confirmed Heart Disease.
 
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
-  geom_point(aes(color = FastingBS)) +
-  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBP)) +
+  geom_point(aes(alpha = FastingBloodSugar)) +
+  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
   scale_color_viridis_b() +
-  facet_grid(Sex ~ HeartDisease)
+  facet_grid(. ~ HeartDisease) +
+  labs(
+    x = "Age", y = "Cholesterol",
+    color = NULL,
+    title = "Does Diabetes contribute to Heart Disease?",
+    subtitle = "N/A",
+    caption = "Source: Kaggle - Heart Failure Prediction Dataset"
+  )
