@@ -7,7 +7,8 @@ library(chron)
 library(dplyr)
 library(readr)
 library(lubridate)
-library("ggridges")
+library(ggridges)
+library(directlabels)
 options("scipen"=10)
 
 # Import the dataset
@@ -116,7 +117,7 @@ heart_health_metrics$HeartDisease) # Asymptomatic chest pain type with normal EC
 # to diabetes and confirmed Heart Disease.
 
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
-  geom_point(aes(alpha = FastingBloodSugar)) +
+  geom_point(aes(color = FastingBloodSugar)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
   scale_color_viridis_b() +
   facet_grid(. ~ HeartDisease) +
@@ -124,6 +125,54 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
     x = "Age", y = "Cholesterol",
     color = NULL,
     title = "Does Diabetes contribute to Heart Disease?",
+    subtitle = "N/A",
+    caption = "Source: Kaggle - Heart Failure Prediction Dataset" 
+  )
+
+# Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
+# to Oldpeak (ST-T wave abnormality) and confirmed Heart Disease.
+
+ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_point(aes(color = Oldpeak)) +
+  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
+  scale_color_viridis_b() +
+  facet_grid(. ~ HeartDisease) +
+  labs(
+    x = "Age", y = "Cholesterol",
+    color = NULL,
+    title = "Does a higher Oldpeak contribute to Heart Disease?",
+    subtitle = "N/A",
+    caption = "Source: Kaggle - Heart Failure Prediction Dataset"
+  )
+
+# Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
+# to ST_Slope (ECG Wave types) and confirmed Heart Disease.
+
+ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_point(aes(alpha = ST_Slope)) +
+  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
+  scale_color_viridis_b() +
+  facet_grid(. ~ HeartDisease) +
+  labs(
+    x = "Age", y = "Cholesterol",
+    color = NULL,
+    title = "Do different ECG's contribute to Heart Disease?",
+    subtitle = "N/A",
+    caption = "Source: Kaggle - Heart Failure Prediction Dataset"
+  )
+
+# Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
+# to Exercise Angina and confirmed Heart Disease.
+
+ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_point(aes(alpha = ExerciseAngina)) +
+  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
+  scale_color_viridis_b() +
+  facet_grid(. ~ HeartDisease) +
+  labs(
+    x = "Age", y = "Cholesterol",
+    color = NULL,
+    title = "Does Exercise Angina contribute to Heart Disease?",
     subtitle = "N/A",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
