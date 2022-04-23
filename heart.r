@@ -79,7 +79,7 @@ heart_health_metrics %>%
 aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean) # Around the age of 55 appears to be the peak of Heart Disease.
 
 # Comparing average RestingBloodPressure for those with and without Heart Disease.
-aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$HeartDisease, FUN = mean) # Although the difference between blood pressure for those with and without Heart Disease appears to be
+aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$HeartDisease, FUN = mean) # Although the difference between blood pressure for those with and without Heart Disease appears to be # nolint
 # negligible, this indicates that a higher blood pressure is somewhat associated with a higher risk of Heart Disease. Blood Pressure of under 120 is considered normal.
 
 # Comparing average Cholesterol for those with and without Heart Disease.
@@ -113,6 +113,11 @@ heart_health_metrics$Sex,
 heart_health_metrics$FastingBloodSugar,
 heart_health_metrics$HeartDisease) # Asymptomatic chest pain type with normal ECG readings in Males appears to show the highest rates of HeartDisease.
 
+heart_disease_labels <- c(
+                    `0` = "Confirmed Heart Disease",
+                    `1` = "Unconfirmed Heart Disease",
+                    )
+
 # Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
 # to diabetes and confirmed Heart Disease.
 
@@ -120,11 +125,14 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
   geom_point(aes(color = FastingBloodSugar)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
   facet_grid(Sex ~ HeartDisease) +
+  ylim(100,600) +
+  scale_color_viridis_b() +
+  guides(color = FALSE) +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
     color = NULL,
     title = "Does Diabetes contribute to Heart Disease?",
-    subtitle = "Light Blue = Pre-Diabetic / Diabetic",
+    subtitle = "Light Green = Pre-Diabetic / Diabetic",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -135,11 +143,14 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
   geom_point(aes(color = Oldpeak)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
   facet_grid(Sex ~ HeartDisease) +
+  ylim(100,600) +
+  scale_color_viridis_b() +
+  guides(color = FALSE) +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
     color = NULL,
     title = "Does an ST-T wave abnormality contribute to Heart Disease?",
-    subtitle = "Lighter blue = increased abnormality",
+    subtitle = "Green -> Yellow = increased abnormality",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -149,13 +160,13 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
   geom_point(aes(alpha = ST_Slope)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
-  scale_color_viridis_b() +
   facet_grid(Sex ~ HeartDisease) +
+  ylim(100,600) +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
     color = NULL,
     title = "What ECG wave types contribute to a higher risk of Heart Disease?",
-    subtitle = "",
+    subtitle = "Lighter Grey = higher risk ECG type",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 

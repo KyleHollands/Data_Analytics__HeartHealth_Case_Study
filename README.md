@@ -93,6 +93,10 @@ Guiding questions
     - No data has been removed or added to the dataset, therefore the integrity is intact.
 
 - What steps have you taken to ensure that your data is clean?
+    - I first inspected the CSV file, filtering the data, running a pivot table, sorting it, etc to try and
+    discern any errors or discrepancies from the outset.
+    - I then imported the data into Visual Studio Code (R), and started checking for NA's, missing values,
+    extreme outliers that might indicate errors, and so forth.
 
 - How can you verify that your data is clean and ready to analyze?
 
