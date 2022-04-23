@@ -72,13 +72,13 @@ A clear statement of the business task you have selected to investigate **
 
 - Identify how it’s organized. **
 
-- Sort and filter the data.
+- Sort and filter the data. **
 
-- Determine the credibility of the data.
+- Determine the credibility of the data. **
 
 > Deliverable 
 
-A description of all data sources used
+A description of all data sources used **
 
 ## Process
 
@@ -91,13 +91,15 @@ Guiding questions
     - After acquiring the dataset from the Kaggle website, the integrity of the data appears to be in tact as the size of the dataset is the same as its source.
     - The formatting of the data is consistent, and although one column was modified to be analyzed easier, it does not change the representation of it.
     - No data has been removed or added to the dataset, therefore the integrity is intact.
+    - Another important thing to consider is, depending on the analysis, is there bias within the data? In this case, there does appear to be a certain degree of sampling bias, as the overall sample consists of far more Males than Females.
 
 - What steps have you taken to ensure that your data is clean?
     - I first inspected the CSV file, filtering the data, running a pivot table, sorting it, etc to try and
     discern any errors or discrepancies from the outset.
-    - I then imported the data into Visual Studio Code (R), and started checking for NA's, missing values,
-    extreme outliers that might indicate errors, and so forth.
+    - I then imported the data into Visual Studio Code (R), and started checking for NA's, missing values and extreme outliers that might indicate errors, and so forth.
+    - There was a sampling bias discovered between Males and Females, but for the purposes of this analysis, it doesn't play a critical role in the outcome.
 
 - How can you verify that your data is clean and ready to analyze?
+    - I double-checked the data for NA's, extreme outliers that would skew the results and values that are 0 that are likely errors.
 
 - Have you documented your cleaning process so you can review and share those results?
