@@ -30,14 +30,15 @@ table(heart_health_metrics$Sex) # Sampling bias found.
 aggregate(heart_health_metrics$Age ~ heart_health_metrics$Sex, FUN = mean) # The average age appears to be relatively the same between Males and Females sampled.
 sapply(heart_health_metrics, function(x) sum(is.na(x))) # There are no N/A's within the data.
 
-# Remove any rows where Cholesterol equates to 0.
-heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$Cholesterol <= 0),]
-
 # Rename some of the columns.
 heart_health_metrics <- rename(heart_health_metrics,
   RestingBloodPressure = RestingBP,
   FastingBloodSugar = FastingBS,
   MaxHeartRate = MaxHR)
+  
+# Remove any rows where Cholesterol and Resting Blood Pressure equates to 0.
+heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$Cholesterol <= 0),]
+heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$RestingBloodPressure <= 0),]
 
 heart_health_metrics %>%
   filter(Sex == "F", ) %>%
@@ -48,7 +49,9 @@ heart_health_metrics %>%
             min_chol = min(Cholesterol), # There are many rows with 0, indicating data was not collected for some individuals.
             max_chol = max(Cholesterol), # Possible error in max_chol.
             min_max_hr = min(MaxHeartRate),
-            max_max_hr = max(MaxHeartRate))
+            max_max_hr = max(MaxHeartRate),
+            min_fasting_bs = min(FastingBloodSugar),
+            max_fasting_bs = max(FastingBloodSugar))
 
 heart_health_metrics %>%
   filter(Sex == "M", ) %>%
@@ -59,7 +62,9 @@ heart_health_metrics %>%
             min_chol = min(Cholesterol), # There are many rows with 0, indicating data was not collected for some individuals.
             max_chol = max(Cholesterol), # Possible error in max_chol.
             min_max_hr = min(MaxHeartRate),
-            max_max_hr = max(MaxHeartRate))
+            max_max_hr = max(MaxHeartRate),
+            min_fasting_bs = min(FastingBloodSugar),
+            max_fasting_bs = max(FastingBloodSugar))
 
 # Start comparing variables for further insight.
 
@@ -113,26 +118,29 @@ heart_health_metrics$Sex,
 heart_health_metrics$FastingBloodSugar,
 heart_health_metrics$HeartDisease) # Asymptomatic chest pain type with normal ECG readings in Males appears to show the highest rates of HeartDisease.
 
-heart_disease_labels <- c(
-                    `0` = "Confirmed Heart Disease",
-                    `1` = "Unconfirmed Heart Disease",
-                    )
+(heart_disease_labels <- c(
+                    `0` = "Normal",
+                    `1` = "Heart Disease",
+                    `F` = "Female",
+                    `M` = "Male"
+                    ))
 
 # Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
 # to diabetes and confirmed Heart Disease.
 
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_density_2d(alpha = 0.50, size = 0.1) +
+  theme(legend.position = "bottom") +
   geom_point(aes(color = FastingBloodSugar)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
-  facet_grid(Sex ~ HeartDisease) +
-  ylim(100,600) +
-  scale_color_viridis_b() +
-  guides(color = FALSE) +
+  facet_grid(. ~ HeartDisease, labeller = as_labeller(heart_disease_labels)) +
+  ylim(75,600) +
+  scale_color_viridis_c() +
+  #guides(color = "none") +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
-    color = NULL,
     title = "Does Diabetes contribute to Heart Disease?",
-    subtitle = "Light Green = Pre-Diabetic / Diabetic",
+    subtitle = "1 = Pre-diabetes/diabetes | Blue line = BP",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -140,17 +148,18 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
 # to Oldpeak (ST-T wave abnormality) and confirmed Heart Disease.
 
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_density_2d(alpha = 0.50, size = 0.1) +
+  theme(legend.position = "bottom") +
   geom_point(aes(color = Oldpeak)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
-  facet_grid(Sex ~ HeartDisease) +
-  ylim(100,600) +
-  scale_color_viridis_b() +
-  guides(color = FALSE) +
+  facet_grid(. ~ HeartDisease, labeller = as_labeller(heart_disease_labels)) +
+  ylim(75,600) +
+  scale_color_viridis_c() +
+  #guides(color = "none") +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
-    color = NULL,
     title = "Does an ST-T wave abnormality contribute to Heart Disease?",
-    subtitle = "Green -> Yellow = increased abnormality",
+    subtitle = "Lower value = less risk | Blue line = BP",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -158,15 +167,17 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
 # to ST_Slope (ECG Wave types) and confirmed Heart Disease.
 
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
-  geom_point(aes(alpha = ST_Slope)) +
+  geom_density_2d(alpha = 0.50, size = 0.1) +
+  theme(legend.position = "bottom") +
+  geom_point(aes(color = ST_Slope)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
-  facet_grid(Sex ~ HeartDisease) +
-  ylim(100,600) +
+  facet_grid(. ~ HeartDisease, labeller = as_labeller(heart_disease_labels)) +
+  ylim(75,600) +
+  scale_color_viridis_d() +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
-    color = NULL,
     title = "What ECG wave types contribute to a higher risk of Heart Disease?",
-    subtitle = "Lighter Grey = higher risk ECG type",
+    subtitle = "",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -174,13 +185,54 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
 # to Exercise Angina and confirmed Heart Disease.
 
 ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_density_2d(alpha = 0.50, size = 0.1) +
+  theme(legend.position = "bottom") +
   geom_point(aes(color = ExerciseAngina)) +
   geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
-  facet_grid(Sex ~ HeartDisease) +
+  facet_grid(. ~ HeartDisease, labeller = as_labeller(heart_disease_labels)) +
+  ylim(75,600) +
+  scale_color_viridis_c() +
+  #guides(color = "none") +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
-    color = NULL,
     title = "Does Exercise Angina contribute to Heart Disease?",
-    subtitle = "Light blue = Exercise Angina",
+    subtitle = "1 = Exercise Angina | Blue line = Blood Pressure",
+    caption = "Source: Kaggle - Heart Failure Prediction Dataset"
+  )
+
+# Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
+# to Chest Pain Type and confirmed Heart Disease.
+
+ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_density_2d(alpha = 0.50, size = 0.1) +
+  theme(legend.position = "bottom") +
+  geom_point(aes(color = ChestPainType)) +
+  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
+  facet_grid(. ~ HeartDisease, labeller = as_labeller(heart_disease_labels)) +
+  ylim(75,600) +
+  scale_color_viridis_d() +
+  labs(
+    x = "Age", y = "Cholesterol (mm/dl)",
+    title = "What Chest Pain types contribute to a higher risk of Heart Disease?",
+    subtitle = "Blue line = Blood Pressure",
+    caption = "Source: Kaggle - Heart Failure Prediction Dataset"
+  )
+
+# Comparing the three basic metrics for Heart Disease (Age, Cholesterol and Blood Pressure)
+# to Max Heart Rate and confirmed Heart Disease.  
+
+ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
+  geom_density_2d(alpha = 0.50, size = 0.1) +
+  theme(legend.position = "bottom") +
+  geom_point(aes(color = MaxHeartRate)) +
+  geom_smooth(method="loess", se=F, aes(x = Age, y = RestingBloodPressure)) +
+  facet_grid(. ~ HeartDisease, labeller = as_labeller(heart_disease_labels)) +
+  ylim(75,600) +
+  scale_color_viridis_c() +
+  #guides(color = "none") +
+  labs(
+    x = "Age", y = "Cholesterol (mm/dl)",
+    title = "Does a higher max heart rate contribute to Heart Disease?",
+    subtitle = "Blue line = Blood Pressure",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
