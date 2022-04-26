@@ -82,7 +82,7 @@ heart_health_metrics %>%
 
 # Comparing average Age for those with and without Heart Disease.
 aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean) # Around the age of 50-55 appears to be the peak of Heart Disease.
-
+  
 # Comparing average RestingBloodPressure for those with and without Heart Disease.
 aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$HeartDisease, FUN = mean) # Although the difference between blood pressure for those with and without Heart Disease appears to be # nolint
 # negligible, this indicates that a higher blood pressure is somewhat associated with a higher risk of Heart Disease. Blood Pressure of under 120 is considered normal.
