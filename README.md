@@ -94,11 +94,72 @@ Guiding questions
 
 - What steps have you taken to ensure that your data is clean?
     - I first inspected the CSV file, filtering the data, running a pivot table and sorting it to try and
-    identify any errors or discrepancies from the outset.
-    - I then imported the data into Visual Studio Code (R) and started checking for NA's, missing values and extreme outliers that might indicate errors, etc.
-    - There was a sampling bias discovered between Males and Females, but it doesn't play a critical role in the outcome of this analysis.
+    identify any errors or discrepancies from the outset. No initial manipulation of the data was necessary in Excel, however, I was able to discern preliminary trends in the data to focus on during primary analysis.
+    - I then imported the data into Visual Studio Code (R) and started checking for NA's, missing values and extreme outliers that might indicate errors, biases, etc.
+    - There was a sampling bias discovered between Males and Females, but it doesn't play a critical role in the outcome of this analysis, as this is looking at overall risk factors of Heart Disease.
+    - Some columns were then renamed for readability.
+    - Some rows exist where Resting Blood Pressure and Cholesterol were 0, which likely an error in the initial data acquisition. 
+
 
 - How can you verify that your data is clean and ready to analyze?
     - I double-checked the data for NA's, extreme outliers that would skew the results and values that are 0 that are likely errors.
 
 - Have you documented your cleaning process to review and share those results?
+    - The cleaning process has been documented in a prior question.
+
+> Key Tasks
+
+- Check the data for errors. **
+- Choose your tools. **
+- Transform the data so you can work with it effectively. **
+- Document the cleaning process. **
+
+> Deliverable 
+
+Documentation of any cleaning or manipulation of data **
+
+## Analyze
+
+Guiding Questions
+
+- How should you organize your data to perform analysis on it?
+    - The data being analyzed already came combined from multiple datasets. I imported it into Visual Studio Code (R) which allowed me to start analyzing it a lot more efficiently.
+    - The original data is stored separate from the modified CSV.
+
+- Has your data been properly formatted?
+    - The data does appear to be properly formatted upon being imported into R.
+
+- What surprises did you discover in the data?
+    - There are some missing values for Resting Blood Pressure and Cholesterol. There also appear to be a few outliers in the data, such as high Cholesterol values.
+    - A sampling bias appears to exist, as there are far more males represented in the data than females. For the purposes of this analysis, however, it does not impact the insights.
+    - 
+
+- What trends or relationships did you find in the data?
+    - A higher Cholesterol may indicate a greater risk of Heart Disease.
+    - There is a higher risk of Heart Disease, on average, around the ages of 50-55.
+    - Pre-diabetes/diabetes appears to lead to a greater risk of heart disease.
+    - Experiencing exercise angina is a substantial indicator of potential heart disease.
+    - Abnormalities in ECG readings, such as an ST-T wave abnormality, may indicate a greater risk of heart disease.
+    - Asymptomatic chest pain type appears to lead to a greater risk of heart disease. However, this just simply means that an individual who has not experienced chest pain, did not have that indicator as a early warning.
+    - In contrast to what I had originally thought, it appears a lower max heart rate may be indicative of future heart disease. This could show a decreased capability of the heart due to underlying conditions.
+
+- How will these insights help answer your business questions?
+    - These insights will allow for individuals that experience them to take the necessary steps to help lessen their chance of heart disease.
+    - For example, those that are in a pre-diabetic/diabetic (type 2) stage, can make fitness and dietary changes.
+    - Those with high cholesterol or higher blood pressure can also make similar changes based on this information.
+
+> Key tasks 
+
+- Aggregate your data so it’s useful and accessible. **
+
+- Organize and format your data. **
+
+- Perform calculations. **
+
+- Document your calculations to keep track of your analysis steps. **
+
+- Identify trends and relationships. **
+
+> Deliverable 
+
+A summary of your analysis **

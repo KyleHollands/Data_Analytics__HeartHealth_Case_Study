@@ -25,20 +25,20 @@ summary(heart_health_metrics)
 str(heart_health_metrics)
 View(heart_health_metrics)
 
-# Investigate data further for bias, missing data, extreme outliers, etc.
-table(heart_health_metrics$Sex) # Sampling bias found.
-aggregate(heart_health_metrics$Age ~ heart_health_metrics$Sex, FUN = mean) # The average age appears to be relatively the same between Males and Females sampled.
-sapply(heart_health_metrics, function(x) sum(is.na(x))) # There are no N/A's within the data.
-
 # Rename some of the columns.
 heart_health_metrics <- rename(heart_health_metrics,
   RestingBloodPressure = RestingBP,
   FastingBloodSugar = FastingBS,
   MaxHeartRate = MaxHR)
-  
+
 # Remove any rows where Cholesterol and Resting Blood Pressure equates to 0.
 heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$Cholesterol <= 0),]
 heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$RestingBloodPressure <= 0),]
+
+# Investigate data further for bias, missing data, extreme outliers, etc.
+table(heart_health_metrics$Sex) # Sampling bias found.
+aggregate(heart_health_metrics$Age ~ heart_health_metrics$Sex, FUN = mean) # The average age appears to be relatively the same between Males and Females sampled.
+sapply(heart_health_metrics, function(x) sum(is.na(x))) # There are no N/A's within the data.
 
 heart_health_metrics %>%
   filter(Sex == "F", ) %>%
@@ -81,7 +81,7 @@ heart_health_metrics %>%
   summarize(AVG_MaxHeartRate = mean(MaxHeartRate)) # Female average max heart rate is higher.
 
 # Comparing average Age for those with and without Heart Disease.
-aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean) # Around the age of 55 appears to be the peak of Heart Disease.
+aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean) # Around the age of 50-55 appears to be the peak of Heart Disease.
 
 # Comparing average RestingBloodPressure for those with and without Heart Disease.
 aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$HeartDisease, FUN = mean) # Although the difference between blood pressure for those with and without Heart Disease appears to be # nolint
@@ -118,6 +118,7 @@ heart_health_metrics$Sex,
 heart_health_metrics$FastingBloodSugar,
 heart_health_metrics$HeartDisease) # Asymptomatic chest pain type with normal ECG readings in Males appears to show the highest rates of HeartDisease.
 
+# Create some additional labels for the charts.
 (heart_disease_labels <- c(
                     `0` = "Normal",
                     `1` = "Heart Disease",
