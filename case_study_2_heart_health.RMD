@@ -1,6 +1,6 @@
 ---
-title: "Heart Health"
-author: "Kyle"
+title: "Heart Disease Indicators"
+author: "Kyle Hollands"
 date: "26/04/2022"
 output: ioslides_presentation
 ---
@@ -9,17 +9,36 @@ output: ioslides_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Table of Contents
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- Objective
+- What the data shows
+    - Diabetes and Heart Disease
+    - ECG type and Heart Disease
+    - Exercise Angina and Heart Disease
+    - Chest Pain Type and Heart Disease
+    - Max Heart Rate and Heart Disease
+- Conclusion
+- Recommendations
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## Objective
 
-## Slide with Bullets
+- To indicate what factors contribute to Heart Disease, and with this information provide data-driven recommendations on how to mitigate it.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+## What the data shows
+- In all analysis, the common contributors of Heart Disease are included, such as Cholesterol, Age and Blood Pressure.
+    - The data indicates that there does appear to be a connection between higher Cholesterol, Age and Blood Pressure with a greater risk of Heart Disease.
+
+- The remaining metrics that appear to lead to a greater risk:
+    - Pre-diabetic / diabetic.
+    - Horizontal or downsloping ECG wave type.
+    - Exercise angina.
+    - Asymptomatic chest pain type.
+    - A lower max heart rate.
+
+## Visualizations
+
+## Diabetes and Heart Disease
 
 ## Slide with R Output
 

@@ -141,7 +141,7 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
     title = "Does Diabetes contribute to Heart Disease?",
-    subtitle = "1 = Pre-diabetes/diabetes | Blue line = BP",
+    subtitle = "1 = Pre-diabetes/diabetes | Blue line = Blood Pressure",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -160,7 +160,7 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
     title = "Does an ST-T wave abnormality contribute to Heart Disease?",
-    subtitle = "Lower value = less risk | Blue line = BP",
+    subtitle = "Lower value = less risk | Blue line = Blood Pressure",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
@@ -178,7 +178,7 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
   labs(
     x = "Age", y = "Cholesterol (mm/dl)",
     title = "What ECG wave types contribute to a higher risk of Heart Disease?",
-    subtitle = "",
+    subtitle = "Blue line = Blood Pressure",
     caption = "Source: Kaggle - Heart Failure Prediction Dataset"
   )
 
