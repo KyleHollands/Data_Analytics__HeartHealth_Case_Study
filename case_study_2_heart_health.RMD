@@ -48,30 +48,25 @@ heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$RestingBlood
 
 - Objective
 - The Data Analyzed
-    - Diabetes and Heart Disease
-    - ST-T wave abnormality
-    - ECG type and Heart Disease
-    - Exercise Angina and Heart Disease
-    - Chest Pain Type and Heart Disease
-    - Max Heart Rate and Heart Disease
+- Visualizations
 - Conclusion
 - Recommendations
 
 ## Objective
 
-- To indicate what factors contribute to Heart Disease, and with this information provide data-driven recommendations on how to mitigate it.
+- To indicate what factors may contribute to heart disease.
 
 ## The Data Analyzed
 - In all analysis, the common contributors of Heart Disease are included, such as Cholesterol, Age and Blood Pressure.
     - The data indicates that there does appear to be a connection between higher Cholesterol, Age and Blood Pressure with a greater risk of Heart Disease.
 
 - Other metrics analyzed:
-    - Pre-diabetics and diabetics.
+    - Pre-diabetics and diabetics
     - ST-T wave abnormality
-    - ECG wave types.
-    - Exercise angina.
-    - Chest pain type.
-    - A lower max heart rate.
+    - ECG wave types
+    - Exercise angina
+    - Chest pain type
+    - A lower max heart rate
 
 ## Visualizations
 
@@ -191,11 +186,13 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
 
 ## Conclusion
 - Based on the relationships indicated, the following appear to lead to a greater risk of Heart Diease:
-    - Pre-diabetes / diabetes.
-    - A higher ST-T wave abnormality value.
-    - Flat and down ECG wave types.
-    - Exercise angina.
-    - Asymptomatic chest pain.
-    - A lower max heart rate.
+    - Pre-diabetes / diabetes
+    - A higher ST-T wave abnormality value
+    - Flat and down ECG wave types
+    - Exercise angina
+    - Asymptomatic chest pain
+    - A lower max heart rate
 
 ## Recommendations
+- Certain lifestyle changes, such as diet can help mitigate some, if not all, risk factors of Heart Disease to a 
+certain extent.
