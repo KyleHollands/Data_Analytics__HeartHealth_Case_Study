@@ -90,11 +90,15 @@ aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$Heart
 # Comparing average Cholesterol for those with and without Heart Disease.
 aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean)
 
+setNames(aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean), c("Cholesterol","Heart Disease"))
+
 # Comparing FastingBloodSugar (diabetic or not) for those with and without Heart Disease.
 aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = sum) # This indicates that pre-diabetics and diabetics are at a higher risk of Heart Disease.
+setNames(aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = mean), c("Diabetes","Heart Disease"))
 
 # Comparing MaxHeartRate for those with and without Heart Disease.
 aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$HeartDisease, FUN = mean)
+setNames(aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$HeartDisease, FUN = mean), c("Max Heart Rate","Heart Disease"))
 
 # Comparing ExerciseAngina for those with and without Heart Disease.
 aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean) # Those with exercise angina appear to be a greater risk of Heart Disease.

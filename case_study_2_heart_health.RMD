@@ -68,6 +68,19 @@ heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$RestingBlood
     - Chest pain type
     - A lower max heart rate
 
+## Data
+- Heart Disease and Cholesterol
+```{r data_1, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean), c("Cholesterol","Heart Disease"))
+```
+- Heart Disease and Diabetes
+```{r data_2, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = mean), c("Diabetes","Heart Disease"))
+```
+- Heart Disease and Max Heart Rate
+```{r data_2, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$HeartDisease, FUN = mean), c("Max Heart Rate","Heart Disease"))
+```
 ## Visualizations
 
 ## Diabetes and Heart Disease
@@ -185,7 +198,7 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
 ```
 
 ## Conclusion
-- Based on the relationships indicated, the following appear to lead to a greater risk of Heart Diease:
+- In addition to Cholesterol, Age and Blood Pressure, the following appear to lead to a greater risk of Heart Diease:
     - Pre-diabetes / diabetes
     - A higher ST-T wave abnormality value
     - Flat and down ECG wave types
@@ -194,5 +207,5 @@ ggplot(heart_health_metrics, aes(x = Age, y = Cholesterol)) +
     - A lower max heart rate
 
 ## Recommendations
-- Certain lifestyle changes, such as diet can help mitigate some, if not all, risk factors of Heart Disease to a 
-certain extent.
+- Certain lifestyle changes, such as diet and exercise could possibly help mitigate some, if not all, risk factors of Heart Disease to a 
+certain extent. However, this is not professional medical advice and one should consult their healthcare practitoner.
