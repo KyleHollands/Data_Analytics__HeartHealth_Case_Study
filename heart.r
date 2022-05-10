@@ -102,19 +102,24 @@ setNames(aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$Hear
 
 # Comparing ExerciseAngina for those with and without Heart Disease.
 aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean) # Those with exercise angina appear to be a greater risk of Heart Disease.
+setNames(aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean), c("Exercise Angina","Heart Disease"))
 
 # Comparing Oldpeak (ST-T wave abnormality) for those with and without Heart Disease.
 aggregate(heart_health_metrics$Oldpeak ~ heart_health_metrics$HeartDisease, FUN = mean) # Those with ST-T wave abnormalities in their ECG readings are at a higher risk of Heart Disease.
+setNames(aggregate(heart_health_metrics$Oldpeak ~ heart_health_metrics$HeartDisease, FUN = mean), c("ST-T Wave Abnormality","Heart Disease"))
 
 # Comparing ST_Slope (ST-T wave abnormality) of peak exercise for those with and without Heart Disease. # An ST Slope of either flat or down is associated with a higher risk of Heart Disease.
 aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean)
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean), c("ECG Wave Type","Heart Disease"))
 
 # Comparing ChestPainType for those with and without Heart Disease.
 aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean) # Those with asymptomatic chest pain appear to be at the highest risk. This likely indicates
 # that the absense of an indicator, such as chest pain, causes a delay in testing and treatment.
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean), c("Chest Pain Type","Heart Disease"))
 
 # Comparing Resting ECG for those with and without Heart Disease.
 aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$RestingECG, FUN = mean) # ST-T wave abnormalities appear to be associated with a higher risk of Heart Disease.
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean), c("Chest Pain Type","Heart Disease"))
 
 table(heart_health_metrics$RestingECG,
 heart_health_metrics$ChestPainType,

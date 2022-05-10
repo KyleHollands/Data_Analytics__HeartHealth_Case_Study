@@ -68,19 +68,54 @@ heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$RestingBlood
     - Chest pain type
     - A lower max heart rate
 
-## Data
+## Common Heart Disease Indicators
 - Heart Disease and Cholesterol
 ```{r data_1, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean), c("Cholesterol","Heart Disease"))
+setNames(aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Cholesterol"))
 ```
+
+- Heart Disease and Blood Pressure
+```{r data_2, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Blood Pressure"))
+```
+
+- Heart Disease and Age
+```{r data_3, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease"," Average Age"))
+```
+
+## Data 2
+- Heart Disease and Exercise Angina
+```{r data_4, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Exercise Angina"))
+```
+
+- Heart Disease and ST-T Wave Abnormalities
+```{r data_5, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$Oldpeak ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","ST-T Wave Abnormality"))
+```
+
+- Heart Disease and ECG Wave Types
+```{r data_6, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean), c("ECG Wave Type","Heart Disease"))
+```
+
+## Data 3
+- Heart Disease and Chest Pain Types
+```{r data_7, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean), c("Chest Pain Type","Heart Disease Risk"))
+```
+
 - Heart Disease and Diabetes
-```{r data_2, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = mean), c("Diabetes","Heart Disease"))
+```{r data_8, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Diabetes"))
 ```
+
 - Heart Disease and Max Heart Rate
-```{r data_2, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$HeartDisease, FUN = mean), c("Max Heart Rate","Heart Disease"))
+```{r data_9, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$MaxHeartRate ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Max Heart Rate"))
 ```
+
 ## Visualizations
 
 ## Diabetes and Heart Disease
