@@ -68,7 +68,9 @@ heart_health_metrics <- heart_health_metrics[!(heart_health_metrics$RestingBlood
     - Chest pain type
     - A lower max heart rate
 
-## Common Heart Disease Indicators
+## Common Indicators
+
+##
 - Heart Disease and Cholesterol
 ```{r data_1, echo=FALSE ,warning=FALSE,message=FALSE}
 setNames(aggregate(heart_health_metrics$Cholesterol ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Cholesterol"))
@@ -84,10 +86,12 @@ setNames(aggregate(heart_health_metrics$RestingBloodPressure ~ heart_health_metr
 setNames(aggregate(heart_health_metrics$Age ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease"," Average Age"))
 ```
 
-## Data 2
-- Heart Disease and Exercise Angina
-```{r data_4, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Exercise Angina"))
+## Other Indicators
+
+## 
+- Heart Disease and Diabetes
+```{r data_8, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Diabetes"))
 ```
 
 - Heart Disease and ST-T Wave Abnormalities
@@ -97,18 +101,18 @@ setNames(aggregate(heart_health_metrics$Oldpeak ~ heart_health_metrics$HeartDise
 
 - Heart Disease and ECG Wave Types
 ```{r data_6, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean), c("ECG Wave Type","Heart Disease"))
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean), c("ECG Wave Type","Heart Disease Risk"))
 ```
 
-## Data 3
+##
+- Heart Disease and Exercise Angina
+```{r data_4, echo=FALSE ,warning=FALSE,message=FALSE}
+setNames(aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Exercise Angina"))
+```
+
 - Heart Disease and Chest Pain Types
 ```{r data_7, echo=FALSE ,warning=FALSE,message=FALSE}
 setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean), c("Chest Pain Type","Heart Disease Risk"))
-```
-
-- Heart Disease and Diabetes
-```{r data_8, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$FastingBloodSugar ~ heart_health_metrics$HeartDisease, FUN = mean), c("Heart Disease","Diabetes"))
 ```
 
 - Heart Disease and Max Heart Rate
