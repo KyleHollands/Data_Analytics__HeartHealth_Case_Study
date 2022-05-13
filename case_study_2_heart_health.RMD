@@ -101,7 +101,7 @@ setNames(aggregate(heart_health_metrics$Oldpeak ~ heart_health_metrics$HeartDise
 
 - Heart Disease and ECG Wave Types
 ```{r data_6, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean), c("ECG Wave Type","Heart Disease Risk"))
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ST_Slope, FUN = mean), c("ECG Wave Type","Heart Disease"))
 ```
 
 ##
@@ -112,7 +112,7 @@ setNames(aggregate(heart_health_metrics$ExerciseAngina ~ heart_health_metrics$He
 
 - Heart Disease and Chest Pain Types
 ```{r data_7, echo=FALSE ,warning=FALSE,message=FALSE}
-setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean), c("Chest Pain Type","Heart Disease Risk"))
+setNames(aggregate(heart_health_metrics$HeartDisease ~ heart_health_metrics$ChestPainType, FUN = mean), c("Chest Pain Type","Heart Disease"))
 ```
 
 - Heart Disease and Max Heart Rate

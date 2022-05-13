@@ -37,7 +37,7 @@
 
 > Deliverable
 
-A clear statement of the business task you have selected to investigate **
+- A clear statement of the business task you have selected to investigate **
 ## Prepare
 
 > Guiding questions 
@@ -77,11 +77,11 @@ A clear statement of the business task you have selected to investigate **
 
 > Deliverable 
 
-A description of all data sources used **
+- A description of all data sources used **
 
 ## Process
 
-Guiding questions 
+> Guiding questions 
 
 - What tools are you choosing and why?
     - After initially using Excel for some preliminary analysis, I'll primarily be using R for the rest of the analysis, visualizations and presentation. I might utilize Tableau for visualizations as well.
@@ -116,11 +116,11 @@ Guiding questions
 
 > Deliverable 
 
-Documentation of any cleaning or manipulation of data **
+- Documentation of any cleaning or manipulation of data **
 
 ## Analyze
 
-Guiding Questions
+> Guiding Questions
 
 - How should you organize your data to perform analysis on it?
     - The data being analyzed already came combined from multiple datasets. I imported it into Visual Studio Code (R) which allowed me to start analyzing it a lot more efficiently.
@@ -162,4 +162,64 @@ Guiding Questions
 
 > Deliverable 
 
-A summary of your analysis **
+- A summary of your analysis **
+
+## Share
+
+> Guiding questions
+
+- Were you able to answer the business question?
+    - Yes. Based on the data analyzed, the metrics indicated do show a degree of correlation to Heart Disease.
+
+- What story does your data tell?
+    - The story behind this data, is that there are several key metrics that can help determine whether an individual has a greater chance of Heart Disease or not. With this information, physicians can make data-informed decisions on how to best mitigate their impact.
+
+- How do your findings relate to your original question?
+    - The original question revolved around what metrics may contribute to Heart Disease, and the findings directly relate by substantiating the connection between the two.
+
+- Who is your audience? What is the best way to communicate with them?
+    - The audience could be physicians or healthcare practitioners that need the data to make informed decisions when assisting their patients. Second to this, individuals themselves that are managing their health and trying to lessen the impact of these contributors would benefit from this knowledge.
+
+- Can data visualization help you share your findings?
+    - The data visualizations provide a more succinct and obvious correlation between the metrics analyzed and Heart Disease. 
+
+- Is your presentation accessible to your audience?
+    - The visualizations make the findings more presentable to any group as it makes the connections more clear.
+
+> Key tasks
+
+- Determine the best way to share your findings. **
+
+- Create effective data visualizations. **
+
+- Present your findings. **
+
+- Ensure your work is accessible. **
+
+> Deliverable
+
+- Supporting visualizations and key findings **
+
+## Act
+
+> Guiding questions
+
+- What is your final conclusion based on your analysis?
+
+- How could your team and business apply your insights?
+
+- What next steps would you or your stakeholders take based on your findings?
+
+- Is there additional data you could use to expand on your findings?
+
+> Key tasks
+
+- Create your portfolio.
+
+- Add your case study.
+
+- Practice presenting your case study to a friend or family member.
+
+> Deliverable
+
+- Your top high-level insights based on your analysis Based on what you discover, a list of additional deliverables you think would be helpful to include for further exploration
