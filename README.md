@@ -205,21 +205,29 @@
 > Guiding questions
 
 - What is your final conclusion based on your analysis?
+    - The common and more uncommon metrics outlined in this analysis do, to some degree, appear to contribute to a greater chance of Heart Disease. With this information individuals can speak with their physicians to make the necessary lifestyle changes to help mitigate some of them, and received required treatments for others.
 
 - How could your team and business apply your insights?
+    - The information acquired from these insights could be used to help mitigate heart disease by treating underlying risk factors, such as diabetes, high cholesterol, blood pressure, etc. 
 
 - What next steps would you or your stakeholders take based on your findings?
+    - Passing this information onto healthcare professionals to better identify early signs of Heart Disease in their patients would take priority. With that, steps to try and mitigate the impact of these metrics could be taken, such as dietary, physical and mental changes.
 
 - Is there additional data you could use to expand on your findings?
+    - 
 
 > Key tasks
 
-- Create your portfolio.
+- Create your portfolio. **
 
-- Add your case study.
+- Add your case study. **
 
-- Practice presenting your case study to a friend or family member.
+- Practice presenting your case study to a friend or family member. **
 
 > Deliverable
 
 - Your top high-level insights based on your analysis Based on what you discover, a list of additional deliverables you think would be helpful to include for further exploration
+    - There is a clear connection between the more common contributors, such as high Cholesterol, Blood Pressure and Age and Heart Disease. Furthermore, the metrics analyzed in this study indicate there is a certain degree of correlation between them and developing Heart Disease later in life.
+    - It would be interesting to now delve into what steps can be taken to help mitigate heart disease, such as exercise and diet, among others.
+        - For diet, analysis could be completed on what types of foods are best for reversing diabetes, lowering cholesterol and blood pressure.
+        - In terms of exercise, data could be collected and analyzed on which types of exercises are most beneficial for strengthening the heart, whether anaerobic or aerobic.
