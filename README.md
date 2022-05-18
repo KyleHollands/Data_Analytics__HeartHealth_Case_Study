@@ -1,5 +1,8 @@
 # Data_Analytics__HeartHealth_Case_Study
 
+## Pitch
+- Heart disease is one of the leading causes of death worldwide. This case study aims at identifying key metrics that lead to Heart Disease so healthcare providers and individuals can make more informed decisions with their health.
+
 ## Ask
 
 > Guiding questions
